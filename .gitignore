@@ -1,0 +1,105 @@
+# ==================================
+# General Settings & Temporary Files
+# ==================================
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+*.bak
+*.swp
+*~.nib
+local.properties
+.idea/
+.vscode/
+
+# ==================================
+# Backend (Python / FastAPI / Celery)
+# ==================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+wheels/
+share/python-wheels/
+*.manifest
+*.spec
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment Variables & Secrets
+# WARNING: NEVER COMMIT YOUR .env FILES!
+backend/.env
+.env
+.env.local
+.env.*.local
+
+# Databases and Local Storage
+*.sqlite3
+*.db
+backend/test.db
+backend/app.db
+*.log
+backend/logs/
+
+# Testing and Coverage 
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+htmlcov/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# ==================================
+# Frontend (Next.js / Node / React)
+# ==================================
+# Dependencies
+frontend/node_modules/
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store
+
+# Next.js specific
+frontend/.next/
+.next/
+out/
+build/
+frontend/build/
+
+# Typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Vercel
+.vercel
+
+# Misc
+.eslintcache
