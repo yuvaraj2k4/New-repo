@@ -1,0 +1,1312 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius: 12px;
+  --radius-xl: 12px;
+  --radius-lg: 8px;
+  --radius-md: 6px;
+  --radius-sm: 4px;
+  --radius-xs: 2px;
+}
+
+@layer base {
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border, currentColor);
+  }
+}
+
+@layer base {
+  html {
+    font-size: 16px;
+    /* Standard base font size */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smooth: always;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    image-rendering: -webkit-optimize-contrast;
+    /* Sharp icons and images */
+  }
+
+  h1, .h1 {
+    font-family: var(--font-inter), sans-serif;
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    color: var(--brand-navy);
+  }
+
+  h2, .h2 {
+    font-family: var(--font-inter), sans-serif;
+    font-size: 1.875rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    color: var(--brand-navy);
+  }
+
+  h3, .h3 {
+    font-family: var(--font-inter), sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: var(--brand-navy);
+  }
+
+  h4, .h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--brand-navy);
+  }
+
+  small, .small {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--brand-muted);
+  }
+
+  .card-task-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-foreground);
+  }
+
+  .ios-main-heading {
+    font-family: var(--font-inter), sans-serif;
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    color: var(--brand-navy);
+  }
+
+  .ios-page-description {
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--brand-muted);
+    margin-top: 0.5rem;
+  }
+
+  .body-text, .nav-link {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--brand-navy);
+  }
+}
+
+/* ─── Apple iOS Light Mode ─────────────────────────────────────────── */
+:root {
+  --background: 228 25% 97%; /* #F5F6FA */
+  --foreground: 221 30% 20%; /* #232D42 */
+
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 11%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 11%;
+
+  --primary: 230 79% 57%;
+  /* #3a57e8 */
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 240 5% 92%;
+  --secondary-foreground: 240 5% 25%;
+  --muted: 240 5% 94%;
+  --muted-foreground: 221 14% 60%; /* #8A92A6 */
+
+  --accent: 230 79% 57%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 3 86% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 0 0% 93%; /* #EEEEEE */
+  --input: 0 0% 100%;
+  --ring: 230 79% 57%;
+
+  --radius: 0.75rem; /* 12px */
+
+  /* Enterprise brand colors */
+  --brand-primary: #3A57E8;
+  --brand-success: #1AA053;
+  --brand-soft-blue: #EBEEFD;
+  --brand-text-main: #232D42;
+  --brand-text-muted: #8A92A6;
+  --brand-bg-main: #F5F6FA;
+  --brand-border: #EEEEEE;
+
+  /* iOS semantic colors */
+  --ios-blue: #3a57e8;
+  /* Updated to blue */
+  --ios-green: #1AA053;
+  --ios-red: #FF3B30;
+  --ios-orange: #FF9500;
+  --ios-purple: #AF52DE;
+  --ios-teal: #5AC8FA;
+  --ios-indigo: #5856D6;
+  --ios-gray: #8E8E93;
+  --ios-gray2: #AEAEB2;
+  --ios-gray3: #C7C7CC;
+  --ios-gray4: #D1D1D6;
+  --ios-gray5: #E5E5EA;
+  --ios-gray6: #F2F2F7;
+  --ios-separator: rgba(60, 60, 67, 0.29);
+  --ios-opaque-separator: #C6C6C8;
+
+  /* Surface tokens (mapped from M3 → iOS) */
+  --surface: #FFFFFF;
+  --surface-container-lowest: #FFFFFF;
+  --surface-container-low: #EBEBF0;
+  /* Darkened from #F2F2F7 for better contrast */
+  --surface-container: #EBEBF0;
+  /* Darkened from #F2F2F7 */
+  --surface-container-high: #E5E5EA;
+  --surface-container-highest: #D1D1D6;
+  --on-surface: #1C1C1E;
+  --on-surface-variant: #1C1C1E;
+  /* Absolute Contrast */
+  --tertiary: #3A3A3C;
+  /* Dark Charcoal */
+  --outline-variant: rgba(60, 60, 67, 0.35);
+
+  /* Error/Status tokens */
+  --error: #FF3B30;
+  --error-container: rgba(255, 59, 48, 0.12);
+  --on-error: #FFFFFF;
+
+  /* Primary container */
+  --primary-container: #3a57e8;
+  --on-primary-container: #FFFFFF;
+  --on-primary-fixed: #FFFFFF;
+
+  /* Secondary fixed */
+  --secondary-fixed: #5AC8FA;
+}
+
+/* ─── Apple iOS Dark Mode ──────────────────────────────────────────── */
+.dark {
+  --background: 0 0% 7%;
+  --foreground: 0 0% 98%;
+
+  --card: 240 5% 12%;
+  --card-foreground: 0 0% 98%;
+
+  --popover: 240 5% 14%;
+  --popover-foreground: 0 0% 98%;
+
+  --primary: 230 79% 57%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 240 4% 20%;
+  --secondary-foreground: 240 5% 85%;
+
+  --muted: 240 4% 18%;
+  --muted-foreground: 240 4% 60%;
+
+  --accent: 230 79% 57%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 3 90% 58%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 240 4% 22%;
+  --input: 240 5% 14%;
+  --ring: 213 100% 52%;
+
+  --ios-blue: #3a57e8;
+  --ios-green: #30D158;
+  --ios-red: #FF453A;
+  --ios-orange: #FF9F0A;
+  --ios-gray: #98989D;
+  --ios-gray2: #636366;
+  --ios-gray3: #48484A;
+  --ios-gray4: #3A3A3C;
+  --ios-gray5: #2C2C2E;
+  --ios-gray6: #1C1C1E;
+  --ios-separator: rgba(84, 84, 88, 0.65);
+  --ios-opaque-separator: #38383A;
+
+  --surface: #1C1C1E;
+  --surface-container-lowest: #000000;
+  --surface-container-low: #1C1C1E;
+  --surface-container: #2C2C2E;
+  --surface-container-high: #3A3A3C;
+  --surface-container-highest: #48484A;
+  --on-surface: #FFFFFF;
+  --on-surface-variant: #FFFFFF;
+  --tertiary: #FFFFFF;
+  --outline-variant: rgba(84, 84, 88, 0.40);
+
+  --error: #FF453A;
+  --error-container: rgba(255, 69, 58, 0.18);
+  --on-error: #FFFFFF;
+
+  --primary-container: #3a57e8;
+  --on-primary-container: #FFFFFF;
+  --on-primary-fixed: #FFFFFF;
+
+  --secondary-fixed: #5E5CE6;
+}
+
+/* ─── Glass utility ────────────────────────────────────────────────── */
+@utility glass {
+  background-color: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backface-visibility: hidden;
+  /* Prevent blur on transform */
+  transform: translateZ(0);
+  /* Force GPU acceleration for crispness */
+}
+
+.dark .glass {
+  background-color: rgba(28, 28, 30, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ─── HD Rendering Utilities ───────────────────────────────────────── */
+@utility hairline {
+  border-width: 0.5px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .border-hd {
+    border-width: 0.5px;
+  }
+}
+
+/* ─── iOS Surface tokens as CSS classes ───────────────────────────── */
+.bg-surface {
+  background-color: var(--surface);
+}
+
+.bg-surface-container-lowest {
+  background-color: var(--surface-container-lowest);
+}
+
+.bg-surface-container-low {
+  background-color: var(--surface-container-low);
+}
+
+.bg-surface-container {
+  background-color: var(--surface-container);
+}
+
+.bg-surface-container-high {
+  background-color: var(--surface-container-high);
+}
+
+.bg-surface-container-highest {
+  background-color: var(--surface-container-highest);
+}
+
+.text-on-surface {
+  color: var(--on-surface);
+}
+
+.text-on-surface-variant {
+  color: var(--on-surface-variant);
+}
+
+.text-tertiary {
+  color: var(--tertiary);
+}
+
+.text-error {
+  color: var(--error);
+}
+
+.bg-error-container {
+  background-color: var(--error-container);
+}
+
+.border-error-container {
+  border-color: var(--error-container);
+}
+
+.bg-primary-container {
+  background-color: var(--primary-container);
+}
+
+.text-primary-container {
+  color: var(--primary-container);
+}
+
+.text-on-primary-fixed {
+  color: var(--on-primary-fixed);
+}
+
+.text-secondary-fixed {
+  color: var(--secondary-fixed);
+}
+
+.border-outline-variant {
+  border-color: var(--outline-variant);
+}
+
+/* ─── iOS Card shadow ──────────────────────────────────────────────── */
+.ios-card {
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.dark .ios-card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── iOS Button ───────────────────────────────────────────────────── */
+.ios-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--ios-blue);
+  color: #ffffff;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.ios-btn-primary:hover {
+  opacity: 0.9;
+}
+
+.ios-btn-primary:active {
+  transform: scale(0.98);
+  opacity: 0.85;
+}
+
+.ios-btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.ios-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--ios-gray5);
+  color: var(--ios-blue);
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 400;
+  font-size: 0.9375rem;
+  border-radius: 4px;
+  padding: 10px 10px 10px 18px;
+  transition: opacity 0.15s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.dark .ios-btn-secondary {
+  background-color: var(--ios-gray4);
+}
+
+.ios-btn-secondary:hover {
+  opacity: 0.85;
+}
+
+.ios-btn-secondary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ─── iOS Input ────────────────────────────────────────────────────── */
+.ios-input {
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 1px solid #EEEEEE;
+  border-radius: 4px;
+  padding: 0.875rem 1.125rem;
+  /* Slightly larger padding */
+  font-size: 1rem;
+  /* Increased from 0.9375rem */
+  color: var(--on-surface);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  font-family: inherit;
+}
+
+.dark .ios-input {
+  background-color: var(--surface-container);
+  border-color: var(--ios-gray3);
+}
+
+.ios-input:focus {
+  border-color: var(--ios-blue);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
+}
+
+.dark .ios-input:focus {
+  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.2);
+}
+
+.ios-input.error {
+  border-color: var(--ios-red);
+  box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.12);
+}
+
+.ios-input::placeholder {
+  color: var(--tertiary);
+}
+
+/* ─── iOS Segment control / tag ───────────────────────────────────── */
+.ios-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.3125rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: var(--ios-gray6);
+  color: var(--on-surface-variant);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.dark .ios-tag {
+  background-color: var(--ios-gray4);
+}
+
+.ios-tag:hover {
+  background-color: rgba(0, 122, 255, 0.1);
+  color: var(--ios-blue);
+}
+
+.ios-tag:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ─── Project selector ─────────────────────────────────────────────── */
+.architect-select {
+  position: relative;
+  display: inline-block;
+}
+
+.architect-selected {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ios-blue);
+  padding: 0.375rem 0.5rem;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.architect-selected:hover {
+  background: rgba(0, 122, 255, 0.08);
+}
+
+.architect-arrow {
+  font-size: 1.125rem;
+}
+
+.architect-options {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 220px;
+  background: var(--surface);
+  border: 1px solid var(--ios-opaque-separator);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14), 0 2px 8px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+  padding: 0.375rem 0;
+  overflow: hidden;
+}
+
+.dark .architect-options {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.architect-select:hover .architect-options,
+.architect-select:focus-within .architect-options {
+  display: block;
+}
+
+.architect-option {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--on-surface);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.architect-option:hover {
+  background: rgba(0, 122, 255, 0.08);
+}
+
+.architect-option.active {
+  color: var(--ios-blue);
+  background: rgba(0, 122, 255, 0.1);
+  font-weight: 700;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────── */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--ios-gray4);
+  border-radius: 9999px;
+}
+
+/* ─── Prose iOS ─────────────────────────────────────────────────────── */
+.prose h1 {
+  color: var(--on-surface);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ios-opaque-separator);
+}
+
+.prose h2 {
+  color: var(--ios-blue);
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h3 {
+  color: var(--on-surface);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+}
+
+.prose p {
+  color: var(--on-surface);
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  margin: 1rem 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.prose th {
+  background: var(--ios-gray6);
+  color: var(--on-surface-variant);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.625rem 0.875rem;
+  border-bottom: 1px solid var(--ios-opaque-separator);
+  text-align: left;
+}
+
+.dark .prose th {
+  background: var(--ios-gray5);
+}
+
+.prose td {
+  padding: 0.625rem 0.875rem;
+  border-bottom: 1px solid var(--ios-gray5);
+  color: var(--on-surface);
+  vertical-align: top;
+}
+
+.dark .prose td {
+  border-bottom-color: var(--ios-gray3);
+}
+
+.prose tr:last-child td {
+  border-bottom: none;
+}
+
+.prose tr:hover td {
+  background: rgba(0, 122, 255, 0.03);
+}
+
+.prose code {
+  background: var(--ios-gray6);
+  color: var(--ios-red);
+  font-family: 'SF Mono', 'Menlo', 'Monaco', monospace;
+  font-size: 0.8125rem;
+  padding: 0.125rem 0.375rem;
+  border-radius: 5px;
+}
+
+.dark .prose code {
+  background: var(--ios-gray4);
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--ios-blue);
+  padding-left: 0.875rem;
+  color: var(--tertiary);
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+.prose ul {
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose ol {
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose li {
+  color: var(--on-surface);
+  margin-bottom: 0.25rem;
+  line-height: 1.6;
+}
+
+/* ─── Shadow ambient ─────────────────────────────────────────────── */
+.shadow-ambient-sm {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-ambient-md {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dark .shadow-ambient-sm {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark .shadow-ambient-md {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* ─── Animate pulse slow ─────────────────────────────────────────── */
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2.5s ease-in-out infinite;
+}
+
+/* ─── Interactive Project Card ─────────────────────────────────────── */
+.ios-project-card {
+  position: relative;
+  width: 100%;
+  min-height: 260px;
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 1.8rem;
+  border: 1px solid var(--ios-opaque-separator);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.dark .ios-project-card {
+  background: var(--surface-container);
+  border-color: var(--ios-gray4);
+}
+
+.ios-project-card:hover {
+  border-color: var(--ios-blue);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+.dark .ios-project-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.ios-project-card-details {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ios-project-card-button {
+  transform: translate(-50%, 125%);
+  width: 70%;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--ios-blue);
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  position: absolute;
+  left: 50%;
+  bottom: 1.25rem;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(255, 103, 0, 0.3);
+}
+
+.ios-project-card:hover .ios-project-card-button {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+.ios-project-card-button:active {
+  transform: translate(-50%, 0) scale(0.96);
+}
+
+.ios-project-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--on-surface);
+  letter-spacing: -0.01em;
+}
+
+.ios-project-card-body {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.ios-main-heading {
+  font-size: 40px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--on-surface);
+}
+
+.ios-page-description {
+  font-size: 1rem;
+  /* text-lg */
+  line-height: 1.2;
+  color: var(--muted-foreground);
+  font-weight: 300;
+}
+
+/* ─── Interactive Global Button ────────────────────────────────────── */
+.ios-btn-interactive {
+  position: relative;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(to right, #3a57e8, #5a75f0);
+  color: #FFFFFF;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  min-height: 44px;
+}
+
+.ios-btn-interactive span {
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  width: 100%;
+  height: 100%;
+}
+
+.ios-btn-interactive svg {
+  width: 1.1em;
+  height: 1.1em;
+  position: relative;
+  z-index: 10;
+  margin: 0;
+  /* Handled by span gap */
+}
+
+.ios-btn-interactive::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140%;
+  height: 100%;
+  z-index: 5;
+  background: #1C1C1E;
+  transform: skew(30deg) translateX(-15%);
+  transition: transform 0.5s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+.dark .ios-btn-interactive::before {
+  background: #2C2C2E;
+}
+
+.ios-btn-interactive:hover::before {
+  transform: skew(30deg) translateX(110%);
+}
+
+.ios-btn-interactive:active {
+  transform: scale(0.96);
+}
+
+.ios-btn-interactive:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ─── Interactive Dropdown (Select) ───────────────────────────────── */
+.ios-select {
+  width: fit-content;
+  min-width: 210px;
+  /* Increased for better readability of project names */
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--on-surface);
+  overflow: visible;
+}
+
+.ios-selected {
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.5rem 0.875rem;
+  border-radius: 12px;
+  position: relative;
+  z-index: 100;
+  font-size: 13.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border: 1px solid var(--ios-opaque-separator);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.ios-select:hover .ios-selected {
+  border-color: var(--ios-blue);
+  background: var(--surface-container);
+}
+
+.ios-arrow {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: var(--ios-blue);
+  stroke-width: 2.5;
+  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+.ios-options {
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  padding: 0.4rem;
+  background: var(--surface);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--ios-opaque-separator);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 6px;
+  opacity: 0;
+  transform: translateY(-8px) scale(0.98);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 90;
+}
+
+/* Invisible bridge to prevent hover loss between selector and menu */
+.ios-options::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: transparent;
+}
+
+.ios-options.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.ios-select.show .ios-arrow {
+  transform: rotate(180deg);
+}
+
+.ios-select.show .ios-selected {
+  border-color: var(--ios-blue);
+  background: var(--surface-container);
+}
+
+.ios-option {
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.2s ease;
+  background-color: transparent;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--on-surface-variant);
+}
+
+.ios-option:hover {
+  background-color: rgba(58, 87, 232, 0.08);
+  color: var(--ios-blue);
+}
+
+.ios-option.active {
+  background-color: rgba(58, 87, 232, 0.12);
+  color: var(--ios-blue);
+  font-weight: 700;
+}
+
+/* ─── Premium Application Loader ────────────────────────────────── */
+.ios-loader {
+  position: relative;
+  width: var(--loader-size, 54px);
+  height: var(--loader-size, 54px);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ios-loader div {
+  width: 8%;
+  height: 24%;
+  background: currentColor;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  opacity: 0;
+  border-radius: 50px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  animation: ios-fade 1s linear infinite;
+}
+
+@keyframes ios-fade {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.15;
+  }
+}
+
+.ios-loader .bar1 {
+  transform: rotate(0deg) translate(0, -130%);
+  animation-delay: 0s;
+}
+
+.ios-loader .bar2 {
+  transform: rotate(30deg) translate(0, -130%);
+  animation-delay: -1.1s;
+}
+
+.ios-loader .bar3 {
+  transform: rotate(60deg) translate(0, -130%);
+  animation-delay: -1s;
+}
+
+.ios-loader .bar4 {
+  transform: rotate(90deg) translate(0, -130%);
+  animation-delay: -0.9s;
+}
+
+.ios-loader .bar5 {
+  transform: rotate(120deg) translate(0, -130%);
+  animation-delay: -0.8s;
+}
+
+.ios-loader .bar6 {
+  transform: rotate(150deg) translate(0, -130%);
+  animation-delay: -0.7s;
+}
+
+.ios-loader .bar7 {
+  transform: rotate(180deg) translate(0, -130%);
+  animation-delay: -0.6s;
+}
+
+.ios-loader .bar8 {
+  transform: rotate(210deg) translate(0, -130%);
+  animation-delay: -0.5s;
+}
+
+.ios-loader .bar9 {
+  transform: rotate(240deg) translate(0, -130%);
+  animation-delay: -0.4s;
+}
+
+.ios-loader .bar10 {
+  transform: rotate(270deg) translate(0, -130%);
+  animation-delay: -0.3s;
+}
+
+.ios-loader .bar11 {
+  transform: rotate(300deg) translate(0, -130%);
+  animation-delay: -0.2s;
+}
+
+.ios-loader .bar12 {
+  transform: rotate(330deg) translate(0, -130%);
+  animation-delay: -0.1s;
+}
+
+/* Size Variants */
+.ios-loader-sm {
+  --loader-size: 18px;
+}
+
+.ios-loader-md {
+  --loader-size: 32px;
+}
+
+.ios-loader-lg {
+  --loader-size: 54px;
+}
+
+/* ─── Magic Gradient Button (Generate Action) ─────────────── */
+.magic-btn {
+  align-items: center;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: 0;
+  border-radius: 4px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  font-size: 15px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 160px;
+  padding: 2px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.magic-btn:active,
+.magic-btn:hover {
+  outline: 0;
+}
+
+.magic-btn span.inner {
+  background-color: rgb(5, 6, 45);
+  padding: 12px 24px;
+  border-radius: 3px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.magic-btn:hover span.inner {
+  background: none;
+}
+
+.magic-btn:active {
+  transform: scale(0.95);
+}
+
+.magic-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+/* ─── Animated Logout Action Button ─────────────── */
+.logout-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.08);
+  /* Softened shadow */
+  background-color: #FF3B30;
+  /* standardized destructive red */
+}
+
+.logout-action-btn .sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-action-btn .text {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 13px;
+  /* normalized size */
+  font-weight: 600;
+  transition-duration: .3s;
+}
+
+.logout-action-btn:hover {
+  width: 125px;
+  border-radius: 4px;
+  /* Standardized to 4px instead of 40px pill */
+  transition-duration: .3s;
+}
+
+.logout-action-btn:hover .sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 12px;
+}
+
+.logout-action-btn:hover .text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: .3s;
+  padding-right: 15px;
+}
+
+.logout-action-btn:active {
+  transform: translate(1px, 1px);
+}
+
+/* ─── Custom Animated Checkbox (Uiverse) ─────────────────────────── */
+.container-checkbox {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.container-checkbox input {
+  display: none;
+}
+
+.container-checkbox svg {
+  overflow: visible;
+}
+
+.path-checkbox {
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+  stroke-dasharray: 241 9999999;
+  stroke-dashoffset: 0;
+}
+
+.container-checkbox input:checked~svg .path-checkbox {
+  stroke-dasharray: 70.5096664428711 9999999;
+  stroke-dashoffset: -262.2723388671875;
+}
