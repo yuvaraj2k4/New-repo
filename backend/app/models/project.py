@@ -28,6 +28,8 @@ class Project(Base):
     )
     name: Mapped[str] = mapped_column(String(255), nullable=False)
     description: Mapped[str | None] = mapped_column(Text, nullable=True)
+    project_key: Mapped[str] = mapped_column(String(50), nullable=False, index=True)
+    project_url: Mapped[str | None] = mapped_column(String(1024), nullable=True)
     status: Mapped[ProjectStatus] = mapped_column(
         Enum(ProjectStatus, name="project_status"),
         default=ProjectStatus.active,

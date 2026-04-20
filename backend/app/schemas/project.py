@@ -9,19 +9,24 @@ from app.schemas.user import UserResponse
 class ProjectBase(BaseModel):
     name: str
     description: Optional[str] = None
+    project_key: Optional[str] = None
+    project_url: Optional[str] = None
     status: ProjectStatus = ProjectStatus.active
 
 class ProjectCreate(ProjectBase):
-    pass
+    member_ids: Optional[List[UUID]] = []
 
 class ProjectUpdate(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
+    project_key: Optional[str] = None
+    project_url: Optional[str] = None
     status: Optional[ProjectStatus] = None
 
 class ProjectResponse(ProjectBase):
     id: UUID
     org_id: UUID
+    project_key: str # Always present in response
     created_by: UUID
     created_at: datetime
     updated_at: datetime
@@ -35,5 +40,10 @@ class ProjectMemberResponse(BaseModel):
     role: MemberRole
     joined_at: datetime
     user: Optional[UserResponse] = None
+
+    model_config = ConfigDict(from_attributes=True)
+
+class ProjectBulkDelete(BaseModel):
+    project_ids: List[UUID]
 
     model_config = ConfigDict(from_attributes=True)

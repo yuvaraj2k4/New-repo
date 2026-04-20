@@ -4,7 +4,7 @@ from typing import List
 from uuid import UUID
 
 from app.db.session import get_db
-from app.schemas.project import ProjectResponse, ProjectCreate, ProjectMemberResponse
+from app.schemas.project import ProjectResponse, ProjectCreate, ProjectMemberResponse, ProjectBulkDelete
 from app.core.dependencies import get_current_user, validate_csrf
 from app.services.project_service import ProjectService
 from app.models.user import User
@@ -40,3 +40,14 @@ async def read_project(
     if not project:
         raise HTTPException(status_code=404, detail="Project not found")
     return project
+
+@router.post("/bulk-delete")
+async def bulk_delete_projects(
+    delete_in: ProjectBulkDelete,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+    _: None = Depends(validate_csrf),
+):
+    project_service = ProjectService(db)
+    await project_service.bulk_delete_projects(current_user.org_id, delete_in.project_ids)
+    return {"status": "success", "message": f"{len(delete_in.project_ids)} projects deleted."}

@@ -57,8 +57,10 @@ async def login(
     db: AsyncSession = Depends(get_db)
 ):
     auth_service = AuthService(db)
+    print(f"DEBUG: Attempting login for user: {form_data.username}")
     user = await auth_service.authenticate_user(form_data.username, form_data.password)
     if not user:
+        print(f"DEBUG: Authentication failed for user: {form_data.username}")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect username or password",
